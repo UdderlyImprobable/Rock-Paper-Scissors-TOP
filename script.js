@@ -13,11 +13,15 @@ function playRound(playerSelection) {
   computerSelection = getComputerChoice();
   playerSelection = playerSelection.toLowerCase();
 
-  if (computerSelection === "rock" && playerSelection === "paper" || computerSelection === "scissors" && playerSelection === "rock" || computerSelection === "paper" && playerSelection === "scissors"){
+  if (computerSelection === "rock" && playerSelection === "paper" 
+    || computerSelection === "scissors" && playerSelection === "rock" 
+    || computerSelection === "paper" && playerSelection === "scissors"){
       return "You win!";
   } else if (computerSelection === playerSelection) {
       return "Stalemate!"
-  } else if (computerSelection === "paper" && playerSelection === "rock" || computerSelection === "rock" && playerSelection === "scissors" || computerSelection === "scissors" && playerSelection === "paper"){
+  } else if (computerSelection === "paper" && playerSelection === "rock" 
+            || computerSelection === "rock" && playerSelection === "scissors" 
+            || computerSelection === "scissors" && playerSelection === "paper"){
       return "Loser :)";
   } else {
       console.log(computerSelection, playerSelection)
