@@ -7,7 +7,6 @@ function getComputerChoice() {
   } else {
     return "scissors"
   }
-  
 }
 
 function playRound(playerSelection) {
