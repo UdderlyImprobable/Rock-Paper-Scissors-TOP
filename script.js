@@ -28,10 +28,10 @@ function playRound(playerSelection) {
   }
 }
 
-function game() {
+function game(rounds) {
   let computer = 0;
   let player = 0; 
-  for(let i = 0; i < 9; i++) {
+  for(let i = 0; i < rounds; i++) {
     let answer = playRound(prompt("Pick your weapon", ""));
     console.log(answer);
     if(answer === "You win!") {
@@ -43,5 +43,5 @@ function game() {
     }
 
   }
-  return (computer = 5 && computer > player)? "You Lose :(": "Winner!"
+  return (computer > player)? "You Lose :(": "Winner!"
 }
