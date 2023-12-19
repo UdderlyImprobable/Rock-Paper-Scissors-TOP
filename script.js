@@ -6,8 +6,10 @@ const player = document.createElement("p");
 const computer = document.createElement("p");
 const playerScore = document.createElement("p");
 const computerScore = document.createElement("p");
+const finalResult = document.createElement("p");
 const playerScoreText = playerScore.textContent;
 const computerScoreText = computerScore.textContent;
+
 
 player.textContent = "player";
 computer.textContent = "computer";
@@ -30,12 +32,17 @@ function winner(name) {
 }
 
 rock.addEventListener("click", () => {
-  if(+playerScoreText === 5 && +playerScoreText > +computerScoreText) {
-    winner("win");
-    stopPropagation();
-  } else if (+computerScoreText === 5 && +computerScoreText > +playerScoreText) {
-    winner("lose");
-    stopPropagation();
+  console.log(typeof(+playerScore.textContent));
+  if(playerScore.textContent === "5" && +playerScore.textContent > +computerScore.textContent) {
+    console.log("if win")
+    finalResult.textContent = winner("win");
+    results.appendChild(finalResult);
+    preventDefault();
+  } else if (computerScore.textContent === "5" && +computerScore.textContent > +playerScore.textContent) {
+    console.log("if lose")
+    finalResult.textContent = winner("lose");
+    results.appendChild(finalResult);
+    preventDefault();
   }
   results.appendChild(player);
   results.appendChild(computer);
@@ -92,6 +99,7 @@ function playRound(playerSelection) {
   }
 }
 
+/*
 function game() {
   let computer = 0;
   let player = 0; 
@@ -109,4 +117,5 @@ function game() {
   }
   return (computer = 5 && computer > player)? "You Lose :(": "Winner!"
 }
+*/
 
