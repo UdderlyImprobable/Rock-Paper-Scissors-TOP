@@ -27,23 +27,9 @@ if playerscore = 5 && playerscore > computerScore {
 winner(playerscore)
 }
 }*/
-function winner(name) {
-  return "You " + name
-}
 
 rock.addEventListener("click", () => {
-  console.log(typeof(+playerScore.textContent));
-  if(playerScore.textContent === "5" && +playerScore.textContent > +computerScore.textContent) {
-    console.log("if win")
-    finalResult.textContent = winner("win");
-    results.appendChild(finalResult);
-    preventDefault();
-  } else if (computerScore.textContent === "5" && +computerScore.textContent > +playerScore.textContent) {
-    console.log("if lose")
-    finalResult.textContent = winner("lose");
-    results.appendChild(finalResult);
-    preventDefault();
-  }
+  winner();
   results.appendChild(player);
   results.appendChild(computer);
   let roundResult = playRound("rock");
@@ -54,17 +40,37 @@ rock.addEventListener("click", () => {
   }
   results.appendChild(playerScore);
   results.appendChild(computerScore);
+  winner();
+});
 
-});
 paper.addEventListener("click", () => {
-  let result = document.createElement("p");
-  result.textContent = playRound("paper");
-  results.appendChild(result);
+  winner();
+  results.appendChild(player);
+  results.appendChild(computer);
+  let roundResult = playRound("rock");
+  if(roundResult == "win" ) {
+    playerScore.textContent = +playerScore.textContent + 1;
+  } else if (roundResult == "lose") {
+    computerScore.textContent = +computerScore.textContent + 1;
+  }
+  results.appendChild(playerScore);
+  results.appendChild(computerScore);
+  winner();
 });
+
 scissors.addEventListener("click", () => {
-  let result = document.createElement("p");
-  result.textContent = playRound("scissors");
-  results.appendChild(result);
+  winner()
+  results.appendChild(player);
+  results.appendChild(computer);
+  let roundResult = playRound("rock");
+  if(roundResult == "win" ) {
+    playerScore.textContent = +playerScore.textContent + 1;
+  } else if (roundResult == "lose") {
+    computerScore.textContent = +computerScore.textContent + 1;
+  }
+  results.appendChild(playerScore);
+  results.appendChild(computerScore);
+  winner();
 });
 
 function getComputerChoice() {
@@ -96,6 +102,18 @@ function playRound(playerSelection) {
       return "lose";
   } else {
       console.log(computerSelection, playerSelection)
+  }
+}
+
+function winner() {
+  if(playerScore.textContent === "5" && +playerScore.textContent > +computerScore.textContent) {
+    finalResult.textContent = "You Win";
+    results.appendChild(finalResult);
+    preventDefault();
+  } else if (computerScore.textContent === "5" && +computerScore.textContent > +playerScore.textContent) {
+    finalResult.textContent = "You Lose";
+    results.appendChild(finalResult);
+    preventDefault();
   }
 }
 
